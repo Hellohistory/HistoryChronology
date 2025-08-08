@@ -2,6 +2,7 @@
 # -*- mode: python ; coding: utf-8 -*-
 
 import sys
+import os
 from pathlib import Path
 from PyInstaller.utils.hooks import (
     collect_data_files,
@@ -10,8 +11,7 @@ from PyInstaller.utils.hooks import (
     copy_metadata,
 )
 
-# —— 路径设置 ——
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path.cwd()
 RES_DIR = ROOT / "resources"
 LIC_DIR = ROOT / "licenses"
 ICON_PATH = RES_DIR / "logo.ico"
@@ -68,7 +68,7 @@ exe = EXE(
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,
-    upx=True,
+    upx=False,
     console=False,
     icon=str(ICON_PATH) if ICON_PATH.exists() else None,
 )
