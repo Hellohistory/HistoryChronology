@@ -72,4 +72,4 @@ jobs:
             dist_all/ShijianWin7/**
             dist_all/ShijianWin10/**
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
