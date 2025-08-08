@@ -14,7 +14,7 @@ from PySide2.QtWidgets import (
     QGraphicsView,
 )
 
-from models.history_entry import HistoryEntry
+from core.models.history_entry import HistoryEntry
 
 
 class TimelineWidget(QGraphicsView):

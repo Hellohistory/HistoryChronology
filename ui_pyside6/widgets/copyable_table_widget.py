@@ -1,9 +1,12 @@
-# ui/widgets/copyable_table_widget.py
+# ui_pyside6/widgets/copyable_table_widget.py
+# -*- coding: utf-8 -*-
 """
 扩展 QTableWidget：支持框选复制（Ctrl+C）
 """
 
 from __future__ import annotations
+
+from typing import List
 
 from PySide6.QtGui import QKeySequence, QShortcut
 from PySide6.QtWidgets import (
@@ -22,8 +25,8 @@ class CopyableTableWidget(QTableWidget):
         # 支持多选
         self.setSelectionMode(QAbstractItemView.SelectionMode.ExtendedSelection)
         self.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectItems)
-        # 快捷键
-        QShortcut(QKeySequence.StandardKey.Copy, self, activated=self.copy_selection)
+        # 绑定 Ctrl+C 快捷键（与 PySide2 版一致）
+        QShortcut(QKeySequence.Copy, self, activated=self.copy_selection)
 
     def copy_selection(self) -> None:
         """把当前选区内容复制到剪贴板，格式为制表符分隔"""
@@ -34,9 +37,9 @@ class CopyableTableWidget(QTableWidget):
         rows = range(rng.topRow(), rng.bottomRow() + 1)
         cols = range(rng.leftColumn(), rng.rightColumn() + 1)
 
-        lines: list[str] = []
+        lines: List[str] = []
         for r in rows:
-            cells: list[str] = []
+            cells: List[str] = []
             for c in cols:
                 item = self.item(r, c)
                 cells.append("" if item is None else item.text())

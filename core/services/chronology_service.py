@@ -8,7 +8,7 @@ from __future__ import annotations
 from typing import List, Optional
 
 from core.data.repository import ChronologyRepository
-from core.models import HistoryEntry
+from core.models.history_entry import HistoryEntry
 
 
 class ChronologyService:

@@ -1,3 +1,4 @@
+# ui_pyside2/dialogs/advanced_search_dialog.py
 """
 高级搜索对话框：多条件组合，年份区间由 config 控制
 使用 PySide2 代替 PySide6

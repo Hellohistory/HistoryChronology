@@ -1,0 +1,3 @@
+PySide2>=5.15,<5.16
+requests>=2.31
+opencc-python-reimplemented>=0.1.7
