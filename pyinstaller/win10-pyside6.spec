@@ -1,22 +1,15 @@
 # pyinstaller/win10-pyside6.spec
-# -*- mode: python ; coding: utf-8 -*-
 
 import sys
 import os
 from pathlib import Path
-from PyInstaller.utils.hooks import (
-    collect_data_files,
-    collect_submodules,
-    collect_dynamic_libs,
-    copy_metadata,
-)
+from PyInstaller.utils.hooks import collect_data_files, collect_submodules, collect_dynamic_libs
 
 ROOT = Path.cwd()
 RES_DIR = ROOT / "resources"
 LIC_DIR = ROOT / "licenses"
 ICON_PATH = RES_DIR / "logo.ico"
 
-# —— 数据文件 ——
 datas = []
 if RES_DIR.exists():
     for p in RES_DIR.rglob("*"):
@@ -32,7 +25,6 @@ if LIC_DIR.exists():
 
 datas += collect_data_files("opencc", include_py_files=True)
 
-# —— 隐式模块与动态库 ——
 hiddenimports = []
 hiddenimports += collect_submodules("opencc")
 
@@ -41,7 +33,7 @@ binaries = collect_dynamic_libs("PySide6")
 block_cipher = None
 
 a = Analysis(
-    ["entry_pyside6.py"],
+    [str(Path.cwd() / "pyinstaller" / "entry_pyside6.py")],
     pathex=[str(ROOT)],
     binaries=binaries,
     datas=datas,

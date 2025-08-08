@@ -1,15 +1,9 @@
 # pyinstaller/win7-pyside2.spec
-# -*- mode: python ; coding: utf-8 -*-
 
 import sys
 import os
 from pathlib import Path
-from PyInstaller.utils.hooks import (
-    collect_data_files,
-    collect_submodules,
-    collect_dynamic_libs,
-    copy_metadata,
-)
+from PyInstaller.utils.hooks import collect_data_files, collect_submodules, collect_dynamic_libs
 
 ROOT = Path.cwd()
 RES_DIR = ROOT / "resources"
@@ -39,7 +33,7 @@ binaries = collect_dynamic_libs("PySide2")
 block_cipher = None
 
 a = Analysis(
-    ["entry_pyside2.py"],
+    [str(Path.cwd() / "pyinstaller" / "entry_pyside2.py")],
     pathex=[str(ROOT)],
     binaries=binaries,
     datas=datas,
